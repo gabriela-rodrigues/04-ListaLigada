@@ -1,4 +1,3 @@
-
 #include <iostream>
 using namespace std;
 
@@ -145,12 +144,44 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
+		int valor;
+		cout << "Digite o valor a ser excluido: ";
+		cin >> valor;
+
+		NO* anterior = NULL;
+		NO* atual = primeiro;
+
+		while (atual != NULL) {
+			if (atual->valor == valor) {
+				if (anterior == NULL) {
+					primeiro = atual->prox;
+				}
+				else {
+					anterior->prox = atual->prox;
+				}
+				free(atual);
+				cout << "Elemento " << valor << " excluido com sucesso." << endl;
+				return;
+			}
+			anterior = atual;
+			atual = atual->prox;
+		}
+
+		cout << "Elemento " << valor << " nao encontrado na lista." << endl;
 }
 
 void buscarElemento()
 {
-	
+	int busca;
+	cout << "Digite o elemento que quer buscar: ";
+	cin >> busca;
+	if (posicaoElemento(busca) != NULL) {
+		cout << "O valor " <<busca << " foi encontrado ";
+	}
+	else {
+		cout << "O valor " << busca << " nao foi encontrado ";
+	}
+		
 }
 
 
